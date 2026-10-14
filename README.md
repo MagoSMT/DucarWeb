@@ -1,11 +1,16 @@
-# Ducar Multiservice website
-Static responsive website for Ducar Multiservice.
+# Ducar Multiservice Website
 
-## Publish on Vercel
-1. Upload `index.html` and the `assets/` folder to the root of a GitHub repository.
-2. Import the repository in Vercel.
-3. Framework Preset: Other. Build Command: leave blank. Output Directory: `.`.
-4. Deploy.
+Responsive static website for Ducar Multiservice.
 
-Brand colors sampled/approximated from the supplied flyer: blue-purple #41479B and yellow #FFD447, with white and black.
-The WhatsApp form uses the phone number shown on the supplied flyer: +1 623-455-1677. Confirm WhatsApp is active on that number before publishing.
+## Included
+- Brand colors and logo
+- Animated service cards and gallery
+- Contact form that prepares either SMS or WhatsApp
+- Towing photo supplied by the business
+- Pay or Finance Here section linking to the provided Stripe page
+- Location section with a Google Maps embed attempt and a direct link to the shared map pin
+
+## Publish with Vercel
+Upload the contents of this folder to the connected GitHub repository, keeping `index.html` at the project root and the `assets` folder beside it. Commit changes. Vercel should deploy automatically if GitHub integration is enabled.
+
+Note: The direct Google Maps button always links to the exact shared location. The embedded map depends on whether Google resolves the supplied short link inside an iframe.
