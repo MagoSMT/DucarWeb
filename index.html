@@ -140,7 +140,7 @@ section:not(.hero){background-image:linear-gradient(120deg,transparent 0%,#41479
 document.getElementById('year').textContent=new Date().getFullYear();
 // Reliable mobile navigation: the menu is opened by an explicit tap and closes after a section is chosen.
 const menuToggle=document.getElementById('menuToggle'),mainNav=document.getElementById('mainNav');
-if(menuToggle&&mainNav){menuToggle.addEventListener('click',()=>{const open=mainNav.classList.toggle('mobile-open');menuToggle.setAttribute('aria-expanded',String(open));menuToggle.innerHTML=open?'✕ <span>Close</span>':'☰ <span>Menu</span>';});mainNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mainNav.classList.remove('mobile-open');menuToggle.setAttribute('aria-expanded','false');menuToggle.innerHTML='☰ <span>Menu</span>';}));}
+if(menuToggle&&mainNav){const closeMenu=()=>{mainNav.classList.remove('mobile-open');menuToggle.setAttribute('aria-expanded','false');menuToggle.innerHTML='☰ <span>Menu</span>';};menuToggle.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();const open=!mainNav.classList.contains('mobile-open');mainNav.classList.toggle('mobile-open',open);menuToggle.setAttribute('aria-expanded',String(open));menuToggle.innerHTML=open?'✕ <span>Close</span>':'☰ <span>Menu</span>';});mainNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{closeMenu();}));document.addEventListener('click',e=>{if(mainNav.classList.contains('mobile-open')&&!mainNav.contains(e.target)&&!menuToggle.contains(e.target))closeMenu();});}
 // Touch devices have no hover, so tapping a service card triggers the same visual feedback.
 document.querySelectorAll('.service').forEach(card=>{card.setAttribute('tabindex','0');card.setAttribute('role','group');const activate=()=>{document.querySelectorAll('.service.is-active').forEach(other=>{if(other!==card)other.classList.remove('is-active')});card.classList.toggle('is-active');};card.addEventListener('click',e=>{if(e.target.closest('a'))return;activate();});card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();activate();}});});
 
@@ -171,10 +171,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor=>anchor.addEventListene
   const id=anchor.getAttribute('href');if(!id||id==='#')return;const target=document.querySelector(id);if(!target)return;
   event.preventDefault();history.pushState(null,'',id);
   if(reduceMotion){smoothScrollTo(target);return;}
-  clearTimeout(transitionTimer);transitionLayer.classList.remove('play');void transitionLayer.offsetWidth;transitionLayer.classList.add('play');
+  // Never let a missing decorative transition layer block navigation (especially on iPhone).
+  if(transitionLayer){clearTimeout(transitionTimer);transitionLayer.classList.remove('play');void transitionLayer.offsetWidth;transitionLayer.classList.add('play');}
   smoothScrollTo(target);
   target.classList.remove('section-arrival');void target.offsetWidth;target.classList.add('section-arrival');
-  transitionTimer=setTimeout(()=>{transitionLayer.classList.remove('play');target.classList.remove('section-arrival');},1050);
+  transitionTimer=setTimeout(()=>{if(transitionLayer)transitionLayer.classList.remove('play');target.classList.remove('section-arrival');},1050);
 }));
 // Scroll progress indicator and active section in the navigation
 const progressBar=document.getElementById('scrollProgress');
