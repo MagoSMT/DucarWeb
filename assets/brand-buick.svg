@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 180">
+<rect width="360" height="180" rx="18" fill="#fff"/>
+<g transform="translate(83 15)">
+  <path d="M28 5 L72 5 L82 20 L82 103 L55 128 L28 103 Z" fill="#20242b" stroke="#b9bec5" stroke-width="4"/>
+  <path d="M91 5 L135 5 L145 20 L145 103 L118 128 L91 103 Z" fill="#20242b" stroke="#b9bec5" stroke-width="4"/>
+  <path d="M154 5 L198 5 L208 20 L208 103 L181 128 L154 103 Z" fill="#20242b" stroke="#b9bec5" stroke-width="4"/>
+  <path d="M42 19 L69 19 L69 88 L55 101 L42 88 Z" fill="#c6a04a"/>
+  <path d="M105 19 L132 19 L132 88 L118 101 L105 88 Z" fill="#aeb4bc"/>
+  <path d="M168 19 L195 19 L195 88 L181 101 L168 88 Z" fill="#a84a45"/>
+</g>
+<text x="180" y="166" text-anchor="middle" font-family="Arial,sans-serif" font-size="27" font-weight="700" letter-spacing="5" fill="#242832">BUICK</text>
+</svg>
