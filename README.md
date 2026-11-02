@@ -1,16 +1,16 @@
-# Ducar Multiservice website
+# Ducar Multiservice Website
 
-Static HTML website for deployment on Vercel.
+Responsive static website for Ducar Multiservice.
 
-## Included updates
-- Trustindex Google Reviews embed
-- Footer social icons (TikTok, Instagram, Facebook) using the supplied PNG icons
-- Zelle and cash payment options
-- Military and senior citizen 10% discount descriptions
-- Automotive brands strip cropped from the supplied image (logos only)
-- Change widgets again !. 
+## Included
+- Brand colors and logo
+- Animated service cards and gallery
+- Contact form that prepares either SMS or WhatsApp
+- Towing photo supplied by the business
+- Pay or Finance Here section linking to the provided Stripe page
+- Location section with a Google Maps embed attempt and a direct link to the shared map pin
 
-## Deploy
-Upload to files ducarmultiservice.com
+## Publish with Vercel
+Upload the contents of this folder to the connected GitHub repository, keeping `index.html` at the project root and the `assets` folder beside it. Commit changes. Vercel should deploy automatically if GitHub integration is enabled.
 
-Brand section update: individual supplied vehicle logos are displayed in responsive cards; Land Rover is not included.
+Note: The direct Google Maps button always links to the exact shared location. The embedded map depends on whether Google resolves the supplied short link inside an iframe.
